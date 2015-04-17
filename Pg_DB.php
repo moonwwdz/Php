@@ -22,7 +22,7 @@ class Pg {
 
 	//得到全部的计划列表
 	public function getAllList() {
-		$res = pg_query($this->conn,"select * from daily where del_flag <> 0");
+		$res = pg_query($this->conn,"select * from daily where del_flag <> 1");
 		if(!$res) {
 			return "";
 		}

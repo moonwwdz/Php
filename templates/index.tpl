@@ -25,35 +25,28 @@
 		<thead>
 			<tr class="bg-primary">
 				<th>内容</th>
-				<th>1</th>
-				<th>2</th>
-				<th>3</th>
-				<th>4</th>
-				<th>5</th>
-				<th>6</th>
-				<th>7</th>	
+				<th>1<small class="text-danger">(30 mins)</small></th>
+				<th>2<small class="text-danger">(12 hours)</small></th>
+				<th>3<small class="text-danger">(1 day)</small></th>
+				<th>4<small class="text-danger">(2 day)</small></th>
+				<th>5<small class="text-danger">(4 day)</small></th>
+				<th>6<small class="text-danger">(7 day)</small></th>
+				<th>7<small class="text-danger">(15 day)</small></th>	
 			</tr>
 		</thead>
 		<tbody>
-			<?php 
-			require_once('./Pg_DB.php');
-
-			$pg = new Pg("host=localhost port=5432 dbname=node user=wang password=123456");
-			$data = $pg->getAllList();
-			var_dump($data);
-			foreach($data as $v) {
-			?>
+		{foreach $data as $v}
 			<tr>
-				<td></td>
-				<td>2</td>
-				<td>3</td>
-				<td>4</td>
-				<td>5</td>
-				<td>6</td>
-				<td>7</td>
-				<td>8</td>
+				<td>{$v.aim}</td>
+				<td>{$v.phase2}</td>
+				<td>{$v.phase3}</td>
+				<td>{$v.phase4}</td>
+				<td>{$v.phase5}</td>
+				<td>{$v.phase6}</td>
+				<td>{$v.phase7}</td>
+				<td>{$v.phase8}</td>
 			</tr>
-			<?php } ?>
+			{/foreach}
 		</tbody>
 	</table>
 </body>
