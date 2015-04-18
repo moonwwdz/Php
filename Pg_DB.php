@@ -37,7 +37,7 @@ class Pg {
 
 	//添加一个计划
 	public function addOneList($str) {
-		$res = pg_insert($this->conn,"daily",array("aim"=>$str,"phase"=>1));
+		$res = pg_insert($this->conn,"daily",array("aim"=>$str,"phase"=>1,"reg_date"=>"now()"));
 		if(!$res) {
 			return false;
 		}

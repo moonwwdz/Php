@@ -7,6 +7,14 @@ require_once("./TimeHelp.php");
 error_reporting(0);
 // connect db and get data
 $pg = new Pg("host=localhost port=5432 dbname=daily user=postgres password=123456");
+
+if(!empty($_POST['myPlan'])) {
+	$plan = $_POST['myPlan'];
+	$res = $pg->addOneList($plan);
+	if(!$res) {
+		echo "<script>alter(\"Fail!!!!\");</script>";
+	}
+}
 $data = $pg->getAllList();
 
 $timeHelp  = new TimeHelp();
