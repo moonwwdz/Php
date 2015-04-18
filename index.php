@@ -13,7 +13,7 @@ $timeHelp  = new TimeHelp();
 foreach ($data as $k=>$v) {
 	$data[$k] = array_merge($data[$k],$timeHelp->getRegular($v['reg_date']));
 }
-var_dump($data);
+//var_dump($data);
 
 $smarty = new Smarty;
 //$smarty->debugging = true;
