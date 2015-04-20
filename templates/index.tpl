@@ -45,39 +45,30 @@
 				</div>
 			</div>
 		</div>
-
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr class="bg-primary">
 					<th>内容</th>
-					<th>1<label class="label 8label-default">(30 mins)</label></th>
-					<th>2<label class="label 8label-default">(12 hours)</label></th>
-					<th>3<label class="label 8label-default">(1 day)</label></th>
-					<th>4<label class="label 8label-default">(2 day)</label></th>
-					<th>5<label class="label 8label-default">(4 day)</label></th>
-					<th>6<label class="label 8label-default">(7 day)</label></th>
-					<th>7<label class="label 8label-default">(15 day)</label></th>	
+					<th>1<small class="text-danger">(30 mins)</small></th>
+					<th>2<small class="text-danger">(12 hours)</small></th>
+					<th>3<small class="text-danger">(1 day)</small></th>
+					<th>4<small class="text-danger">(2 day)</small></th>
+					<th>5<small class="text-danger">(4 day)</small></th>
+					<th>6<small class="text-danger">(7 day)</small></th>
+					<th>7<small class="text-danger">(15 day)</small></th>	
 				</tr>
 			</thead>
 			<tbody>
-				{assign var="index" value="0"}
 				{foreach $data as $v}
-				<tr name="planList" class="planList">
+				<tr>
 					<td>{$v.aim}</td>
-					<td>{$v.phase2}</td>
-					<td>{$v.phase3}</td>
-					<td>{$v.phase4}</td>
-					<td>{$v.phase5}</td>
-					<td>{$v.phase6}</td>
-					<td>{$v.phase7}</td>
-					<td>{$v.phase8}</td>
-				</tr>
-				<tr name="hiddenBox" id="hiddenBox{$index}" hidden="hidden">
-					{$index = $index+1}
-					<td colspan="8">
-						<div class="top"></div>
-						<textarea name="detail" class="form-control" rows="18" readonly="true">{$v.aim}</textarea>
-					</td>
+					<td {if $v.colorflag2}style="background-color:red;"{/if}>{$v.phase2}</td>
+					<td {if $v.colorflag3}style="background-color:red;"{/if}>{$v.phase3}</td>
+					<td {if $v.colorflag4}style="background-color:red;"{/if}>{$v.phase4}</td>
+					<td {if $v.colorflag5}style="background-color:red;"{/if}>{$v.phase5}</td>
+					<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
+					<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
+					<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
 				</tr>
 				{/foreach}
 			</tbody>
