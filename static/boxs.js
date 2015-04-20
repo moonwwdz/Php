@@ -4,14 +4,15 @@ $(function(){
 		$(obj).click(function(){
 			$("#hiddenBox"+index).fadeToggle("slow",function(obj){
 				console.log(TextFlag);
-				if(TextFlag = 0) {
-					TextFlag == 1;
-					console.log($("#btn"));
+				if(TextFlag == 0) {
+					TextFlag = 1;
 					$("#btn").text("Update");
+					return;
 				}
-				if(TextFlag = 1) {
-					TextFlag == 0;
+				if(TextFlag == 1) {
+					TextFlag = 0;
 					$("#btn").text("Add Plan");
+					return;
 				}
 			});
 		});
