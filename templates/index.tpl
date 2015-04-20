@@ -59,9 +59,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				{foreach $data as $v}
-				<tr>
-					<td>{$v.aim}</td>
+				
+				{assign var="index" value="0"}
+                                {foreach $data as $v}
+                                <tr name="planList" class="planList">
+                                        <td>{$v.aim}</td>
 					<td {if $v.colorflag2}style="background-color:red;"{/if}>{$v.phase2}</td>
 					<td {if $v.colorflag3}style="background-color:red;"{/if}>{$v.phase3}</td>
 					<td {if $v.colorflag4}style="background-color:red;"{/if}>{$v.phase4}</td>
@@ -69,8 +71,16 @@
 					<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
 					<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
 					<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
-				</tr>
-				{/foreach}
+                                </tr>
+                                <tr name="hiddenBox" id="hiddenBox{$index}" hidden="hidden">
+                                        {$index = $index+1}
+                                        <td colspan="8">
+                                                <div class="top"></div>
+                                                <textarea name="detail" class="form-control" rows="18" readonly="true">{$v.aim}</textarea>
+                                        </td>
+                                </tr>
+                                {/foreach}
+
 			</tbody>
 		</table>
 	</form>
