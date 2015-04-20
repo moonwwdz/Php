@@ -62,13 +62,13 @@
 			{foreach $data as $v}
 			<tr>
 				<td>{$v.aim}</td>
-				<td>{$v.phase2}</td>
-				<td>{$v.phase3}</td>
-				<td>{$v.phase4}</td>
-				<td>{$v.phase5}</td>
-				<td>{$v.phase6}</td>
-				<td>{$v.phase7}</td>
-				<td>{$v.phase8}</td>
+				<td {if $v.colorflag2}style="background-color:red;"{/if}>{$v.phase2}</td>
+				<td {if $v.colorflag3}style="background-color:red;"{/if}>{$v.phase3}</td>
+				<td {if $v.colorflag4}style="background-color:red;"{/if}>{$v.phase4}</td>
+				<td {if $v.colorflag5}style="background-color:red;"{/if}>{$v.phase5}</td>
+				<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
+				<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
+				<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
 			</tr>
 			{/foreach}
 		</tbody>

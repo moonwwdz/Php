@@ -4,6 +4,7 @@
 class TimeHelp {
 
 	public $time;
+	public $data;
 	
 	function __construct($time) {
 		
@@ -19,6 +20,7 @@ class TimeHelp {
 		$data['phase7'] = date("Y-m-d",$this->time+24*3600*7);
 		$data['phase8'] = date("Y-m-d",$this->time+24*3600*15);
 		//$data['phase7'] = date("Y-m-d",time($this->time)+24*3600);
+		$data = array_merge($data,$this->addTodayColor($data));
 		return $data;
 	}
 
@@ -28,6 +30,16 @@ class TimeHelp {
 		list($y,$m,$d) = explode('-',$ymd);
 		list($h,$i,$s) = explode(':', $his);
 		$this->time = mktime($h,$i,$s,$m,$d,$y);
+	}
+
+	public function addTodayColor($data) {
+		$today = date("Y-m-d");
+		for ($i=0; $i<9; $i++) {
+			if(substr($data['phase'.$i],0,10) == $today) {
+				$data['colorflag'.$i] = 1;
+			}
+		}
+		return $data;
 	}
 }
 
