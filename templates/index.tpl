@@ -5,8 +5,10 @@
 	<meta charset="UTF-8">
 	<title>Dairy</title>
 	<link href="./static/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./static/boxs.css">
 	<script src="./static/jquery.min.js"></script>
 	<script src="./static/bootstrap.min.js"></script>
+	<script src="./static/boxs.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse" role="navigation">
@@ -18,15 +20,15 @@
 			</ul>
 		</div>
 		<div class="pull-right">
-			<button class="btn btn-primary btn-lg"  data-toggle="modal"  data-target="#myModal">Add Plan</button>
+			<button id="btn" class="btn btn-primary btn-lg"  data-toggle="modal"  data-target="#myModal">Add Plan</button>
 		</div>
 	</nav>
 
 
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form method="post" role="form" action="./index.php">
+	<form method="post" role="form" action="./index.php">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
 						<h4 class="modal-title" id="myModalLabel"> 新的记录 </h4>
@@ -40,38 +42,47 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭 </button>
 						<button type="submit" class="btn btn-primary"> 提交更改 </button>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr class="bg-primary">
+					<th>内容</th>
+					<th>1<small class="text-danger">(30 mins)</small></th>
+					<th>2<small class="text-danger">(12 hours)</small></th>
+					<th>3<small class="text-danger">(1 day)</small></th>
+					<th>4<small class="text-danger">(2 day)</small></th>
+					<th>5<small class="text-danger">(4 day)</small></th>
+					<th>6<small class="text-danger">(7 day)</small></th>
+					<th>7<small class="text-danger">(15 day)</small></th>	
+				</tr>
+			</thead>
+			<tbody>
+				
+				{assign var="index" value="0"}
+                                {foreach $data as $v}
+                                <tr name="planList" class="planList">
+                                        <td>{$v.aim}</td>
+					<td {if $v.colorflag2}style="background-color:red;"{/if}>{$v.phase2}</td>
+					<td {if $v.colorflag3}style="background-color:red;"{/if}>{$v.phase3}</td>
+					<td {if $v.colorflag4}style="background-color:red;"{/if}>{$v.phase4}</td>
+					<td {if $v.colorflag5}style="background-color:red;"{/if}>{$v.phase5}</td>
+					<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
+					<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
+					<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
+                                </tr>
+                                <tr name="hiddenBox" id="hiddenBox{$index}" hidden="hidden">
+                                        {$index = $index+1}
+                                        <td colspan="8">
+                                                <div class="top"></div>
+                                                <textarea name="detail" class="form-control" rows="18" readonly="true">{$v.aim}</textarea>
+                                        </td>
+                                </tr>
+                                {/foreach}
 
-	<table class="table table-bordered table-striped">
-		<thead>
-			<tr class="bg-primary">
-				<th>内容</th>
-				<th>1<small class="text-danger">(30 mins)</small></th>
-				<th>2<small class="text-danger">(12 hours)</small></th>
-				<th>3<small class="text-danger">(1 day)</small></th>
-				<th>4<small class="text-danger">(2 day)</small></th>
-				<th>5<small class="text-danger">(4 day)</small></th>
-				<th>6<small class="text-danger">(7 day)</small></th>
-				<th>7<small class="text-danger">(15 day)</small></th>	
-			</tr>
-		</thead>
-		<tbody>
-			{foreach $data as $v}
-			<tr>
-				<td>{$v.aim}</td>
-				<td {if $v.colorflag2}style="background-color:red;"{/if}>{$v.phase2}</td>
-				<td {if $v.colorflag3}style="background-color:red;"{/if}>{$v.phase3}</td>
-				<td {if $v.colorflag4}style="background-color:red;"{/if}>{$v.phase4}</td>
-				<td {if $v.colorflag5}style="background-color:red;"{/if}>{$v.phase5}</td>
-				<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
-				<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
-				<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
-			</tr>
-			{/foreach}
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</form>
 </body>
 </html>
