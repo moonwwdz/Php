@@ -30,6 +30,7 @@ class TimeHelp {
 		list($y,$m,$d) = explode('-',$ymd);
 		list($h,$i,$s) = explode(':', $his);
 		$this->time = mktime($h,$i,$s,$m,$d,$y);
+		$this->time += 3600*8;
 	}
 
 	public function addTodayColor($data) {
