@@ -30,11 +30,11 @@ class TimeHelp {
 		list($y,$m,$d) = explode('-',$ymd);
 		list($h,$i,$s) = explode(':', $his);
 		$this->time = mktime($h,$i,$s,$m,$d,$y);
-		$this->time += 3600*8;
+		$this->time += 3600*4;
 	}
 
 	public function addTodayColor($data) {
-		$today = date("Y-m-d");
+		$today = date("Y-m-d",time()+3600*4);
 		for ($i=0; $i<9; $i++) {
 			if(substr($data['phase'.$i],0,10) == $today) {
 				$data['colorflag'.$i] = 1;
