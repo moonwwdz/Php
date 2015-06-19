@@ -21,11 +21,31 @@
 		</div>
 		<div class="pull-right">
 			<button id="btn" class="btn btn-primary btn-lg"  data-toggle="modal"  data-target="#myModal">Add Plan</button>
+			<button id="btn2" class="btn btn-primary btn-lg hidden"  data-toggle="modal"  data-target="#myModal2">Update</button>
 		</div>
 	</nav>
 
 
 	<form method="post" role="form" action="./index.php">
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+						<h4 class="modal-title" id="myModalLabel"> 添加新的内容</h4>
+					</div>
+					<div class="modal-body">
+						<div class="input-group">
+							<textarea class="form-control"  name="myPlan2" id="myPlan2" rows="8" cols="72"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭 </button>
+						<button type="submit" class="btn btn-primary"> 提交更改 </button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">

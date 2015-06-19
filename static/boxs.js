@@ -6,12 +6,14 @@ $(function(){
 				console.log(TextFlag);
 				if(TextFlag == 0) {
 					TextFlag = 1;
-					$("#btn").text("Update");
+					$("#btn").hide();
+					$("#btn2").show();
 					return;
 				}
 				if(TextFlag == 1) {
 					TextFlag = 0;
-					$("#btn").text("Add Plan");
+					$("#btn2").hide();
+					$("#btn").show();
 					return;
 				}
 			});
