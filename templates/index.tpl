@@ -21,12 +21,13 @@
 		</div>
 		<div class="pull-right">
 			<button id="btn" class="btn btn-primary btn-lg"  data-toggle="modal"  data-target="#myModal">Add Plan</button>
-			<button id="btn2" class="btn btn-primary btn-lg hidden"  data-toggle="modal"  data-target="#myModal2">Update</button>
+			<button id="btn2" class="btn btn-primary btn-lg "  data-toggle="modal"  data-target="#myModal2">Update</button>
 		</div>
 	</nav>
 
 
 	<form method="post" role="form" action="./index.php">
+	<input id="hiddenId" name="hiddenId" value="" class="hidden">
 		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -36,7 +37,8 @@
 					</div>
 					<div class="modal-body">
 						<div class="input-group">
-							<textarea class="form-control"  name="myPlan2" id="myPlan2" rows="8" cols="72"></textarea>
+							<input class="hidden"  name="contentFlg" value="true">
+							<textarea class="form-control"  name="myPlan2" id="myPlan2" rows="12" cols="72"></textarea>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -91,12 +93,14 @@
 					<td {if $v.colorflag6}style="background-color:red;"{/if}>{$v.phase6}</td>
 					<td {if $v.colorflag7}style="background-color:red;"{/if}>{$v.phase7}</td>
 					<td {if $v.colorflag8}style="background-color:red;"{/if}>{$v.phase8}</td>
+					<td class="hidden"><span>{$v.id}</span></td>
+					<td class="hidden"><div>{$v.contents}</div></td>
                                 </tr>
                                 <tr name="hiddenBox" id="hiddenBox{$index}" hidden="hidden">
                                         {$index = $index+1}
                                         <td colspan="8">
                                                 <div class="top"></div>
-                                                <textarea name="detail" class="form-control" rows="18" readonly="true">{$v.aim}</textarea>
+                                                <span name="detail" class="form-control" style="height:400px;">{$v.contents_md}</span>
                                         </td>
                                 </tr>
                                 {/foreach}

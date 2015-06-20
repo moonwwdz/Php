@@ -22,7 +22,7 @@ class Pg {
 
 	//得到全部的计划列表
 	public function getAllList() {
-		$res = pg_query($this->conn,"select * from daily where del_flag <> 1");
+		$res = pg_query($this->conn,"select * from daily where del_flag <> 1 order by reg_date");
 		if(!$res) {
 			return "";
 		}
@@ -46,7 +46,7 @@ class Pg {
 
 	//更新一个计划的状态
 	public function updatePlan($id,$phase) {
-		$res = pg_update($this->conn,"daily",array("phase"=>$phase),array("id"=>$id));
+		$res = pg_update($this->conn,"daily",array("contents"=>$phase),array("id"=>$id));
 		if(!$res) {
 			return false;
 		}
